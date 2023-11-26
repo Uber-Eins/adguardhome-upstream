@@ -4,7 +4,7 @@ This fork is optimized for users in mainland China
 [![adguardhome-upstream](https://img.shields.io/badge/GitHub-AdGuardHome%20Upstream-blueviolet?style=flat-square&logo=github)](https://github.com/fernvenue/adguardhome-upstream)
 [![adguardhome-upstream](https://img.shields.io/badge/GitLab-AdGuardHome%20Upstream-orange?style=flat-square&logo=gitlab)](https://gitlab.com/fernvenue/adguardhome-upstream)
 
-Use [felixonmars/dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list) with [AdGuardHome](https://github.com/AdGuardTeam/AdGuardHome) on Linux, macOS and other Unix systems.
+使用 [felixonmars/dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list) with [AdGuardHome](https://github.com/AdGuardTeam/AdGuardHome) on Linux, macOS and other Unix systems.
 
 * [Steps for usage](#steps-for-usage)
     * [Before starting](#before-starting)
@@ -116,7 +116,9 @@ On the one hand, for DNS resolution, when the domain's name server is in other r
 
 It's highly NOT recommanded that use any other list, because felixonmars's dnsmasq-china-list actively updated, and has clear rule to determine whether a domain should or shouldn't be added to the list, as above, it uses the location of NS (**YES! NS IS NOT THE SAME THING WITH DNS!!**) as a differentiating criterion. It's also very precise and efficient, some shit projects like to list all subdomains of a domain to a list, but actually you can just use `[/example.com/]` to include them, because a domain itslef and all it's subdomains use same NS! Why these shit project like to list all these subdomains to make things slow and complicated?! Upstream list is definitely not better just because it's larger, it's better when it's more accurate, and actually a larger list is even worse in most cases!
 
-By the way, it's also highly NOT recommanded that use domain SNI instead of IP address for some public DNS servers has certificates on their IP addresses, like `tls://8.8.4.4`, it's actually better than `tls://dns.google`, using an IP address can not only prevent SNI-based RST, but also save additional DNS query to the DNS server itself, why these shit project like to use domain instead of IP address?
+~~By the way, it's also highly NOT recommanded that use domain SNI instead of IP address for some public DNS servers has certificates on their IP addresses, like `tls://8.8.4.4`, it's actually better than `tls://dns.google`, using an IP address can not only prevent SNI-based RST, but also save additional DNS query to the DNS server itself, why these shit project like to use domain instead of IP address?~~
+
+Because some parts of mainland China's policy is a whitelist, which has nothing to do with the use of domain names or IP addresses, it will be reset directly, if you want to use Google in mainland China and other non-mainland DNS, it is still necessary to use proxy servers.Because of this, it's easier to configure the rules on the proxy server when using a domain name, and the resolution is handled using the hosts file, which theoretically doesn't increase the latency by much, so much so that it's quite a bit faster compared to the 100ms+ latency of a direct connection(non-proxy).
 
 ## Something else
 
