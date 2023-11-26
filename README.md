@@ -1,4 +1,5 @@
 # AdGuardHome Upstream
+This fork is optimized for users in mainland China
 
 [![adguardhome-upstream](https://img.shields.io/badge/GitHub-AdGuardHome%20Upstream-blueviolet?style=flat-square&logo=github)](https://github.com/fernvenue/adguardhome-upstream)
 [![adguardhome-upstream](https://img.shields.io/badge/GitLab-AdGuardHome%20Upstream-orange?style=flat-square&logo=gitlab)](https://gitlab.com/fernvenue/adguardhome-upstream)
@@ -41,6 +42,7 @@ Or you can use `find` command to find the configuration file in whole `/` direct
 
 And now let's change some settings:
 
+- If using Docker`Container Name` **must be** `AdguardHome`.
 - `upstream_dns_file` **must be** `/usr/share/adguardhome.upstream`.
 - `all_servers` **should be** `true`.
 - `cache_optimistic` is recommended to be `true`.
